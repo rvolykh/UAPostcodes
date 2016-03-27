@@ -8,7 +8,7 @@ import com.pikaso.rest.entity.Region;
 
 public interface IApiService {
     List<City> getCities(int districtId);
-    List<District> getDistricts(Region region);
+    List<District> getDistricts(int regionId);
     List<Region> getRegions();
     City getCity(int id);
 }

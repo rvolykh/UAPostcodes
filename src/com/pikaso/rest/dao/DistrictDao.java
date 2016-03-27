@@ -7,8 +7,6 @@ import com.pikaso.database.DBConnection;
 import com.pikaso.rest.entity.District;
 
 public class DistrictDao extends ADao<District>{
-    private final static String FAIL_QUERY_EXECUTE = "Can't execute queury %s";
-    
     public static enum DistrictDBQueries {
         GET_BY_ID("SELECT * FROM District WHERE id = '%s';"),
         GET_BY_FIELD("SELECT * FROM District WHERE %s = '%s';");
@@ -51,7 +49,7 @@ public class DistrictDao extends ADao<District>{
 
     @Override
     protected District createInstance(String[] args) {
-        return new District(Integer.parseInt(args[0]),args[1],Integer.parseInt(args[3]));
+        return new District(Integer.parseInt(args[0]),args[1],Integer.parseInt(args[2]));
     }
 
 }

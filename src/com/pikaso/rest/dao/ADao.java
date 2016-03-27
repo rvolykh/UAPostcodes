@@ -13,6 +13,7 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
     protected final static String QUERY_NOT_FOUND = "Query not found %s";
     protected final static String EMPTY_RESULTSET = "Empty ResultSet by Query %s";
     protected final static String DATABASE_READING_ERROR = "Database Reading Error";
+    protected final static String FAIL_QUERY_EXECUTE = "Can't execute queury %s";
     
     protected final HashMap<String, Enum<?>> sqlQueries;
     

@@ -1,7 +1,5 @@
 package com.pikaso.rest.service;
 
-
-import java.util.Arrays;
 import java.util.List;
 
 import com.pikaso.rest.dao.CityDao;
@@ -24,9 +22,9 @@ public class ApiService implements IApiService{
     }
 
     @Override
-    public List<District> getDistricts(Region region) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<District> getDistricts(int regionId) {
+        List<District> districts = districtDao.getByFieldName("regionID", String.valueOf(regionId));
+        return districts;
     }
 
     @Override

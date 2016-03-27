@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.pikaso.rest.entity.City;
+import com.pikaso.rest.entity.District;
 import com.pikaso.rest.entity.Region;
 import com.pikaso.rest.service.ApiService;
 import com.pikaso.rest.service.IApiService;
@@ -36,10 +37,10 @@ public class ApiController {
 
     @GET
     @Path("/district")
-    @Produces("text/plain")
-    public String getDistrict(@QueryParam("name") String name) {
-        String result = "Not implemented yet";
-        return result;
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Response getDistricts(@QueryParam("id") String regionId) {
+        List<District> districts = apiService.getDistricts(Integer.parseInt(regionId));
+        return Response.status(200).entity(districts.toString()).build();
     }
 
     @GET
