@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.pikaso.utils.DBConnection;
+import com.pikaso.database.DBConnection;
 
 public abstract class ADao<TEntity> implements IDao<TEntity> {
     protected final static String QUERY_NOT_FOUND = "Query not found %s";

@@ -6,8 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pikaso.database.DBConnection;
 import com.pikaso.rest.entity.Region;
-import com.pikaso.utils.DBConnection;
 
 public class RegionDao  extends ADao<Region>{
     private final static String FAIL_QUERY_EXECUTE = "Can't execute queury %s";

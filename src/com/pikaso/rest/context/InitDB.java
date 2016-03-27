@@ -4,11 +4,11 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.pikaso.database.DBConnection;
+import com.pikaso.database.DataSourceRepository;
 import com.pikaso.rest.dao.CityDao;
 import com.pikaso.rest.dao.DistrictDao;
 import com.pikaso.rest.dao.RegionDao;
-import com.pikaso.utils.DBConnection;
-import com.pikaso.utils.DataSourceRepository;
 
 public class InitDB {
     public static void okTables(){

@@ -3,8 +3,8 @@ package com.pikaso.rest.dao;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.pikaso.database.DBConnection;
 import com.pikaso.rest.entity.District;
-import com.pikaso.utils.DBConnection;
 
 public class DistrictDao extends ADao<District>{
     private final static String FAIL_QUERY_EXECUTE = "Can't execute queury %s";

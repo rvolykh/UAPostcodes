@@ -1,4 +1,4 @@
-package com.pikaso.utils;
+package com.pikaso.database;
 
 import java.sql.Driver;
 

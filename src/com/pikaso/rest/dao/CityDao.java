@@ -3,8 +3,8 @@ package com.pikaso.rest.dao;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.pikaso.database.DBConnection;
 import com.pikaso.rest.entity.City;
-import com.pikaso.utils.DBConnection;
 
 public class CityDao extends ADao<City>{
     public static enum CityDBQueries {
