@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>UA Postalcodes</title>
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <header>
+            <div id="logo"></div>
+            <div id="slogan">ПОШТОВІ ІНДЕКСИ УКРАЇНИ</div>
+        </header>
+        
+        <main>
+            <h1>Сервіс</h1>
+            <div class="text_wrapper">
+                <p class="text">
+                    REST (скор. англ. Representational State Transfer, «передача репрезентативного стану») — підхід до архітектури мережевих протоколів, які забезпечують доступ до інформаційних ресурсів. Був описаний і популяризований у 2000 році Роєм Філдінгом (Roy Fielding), одним із творців протоколу HTTP. Найвідомішою системою, побудованою переважно за архітектурою REST, є сучасна Всесвітня павутина.
+                </p>
+            </div>
+            <h1>Документація</h1>
+            <div class="text_wrapper">
+                <div class="description">
+                    Description:
+                    You can search 16 day weather forecast with daily average parameters by city name. All weather data can be obtained in JSON, XML or HTML format.
+                </div>
+                <div class="api">
+                    <h3 class="doc_title">API call:</h3>
+                    <blockquote class="url">
+                        api.openweathermap.org/data/2.5/forecast/daily?q={city name},{country code}&cnt={cnt}
+                    </blockquote>
+                    <h3 class="doc_title">Parameters:</h3>
+                    <h4>INPUT:</h4>
+                    <span class="param">q</span>
+                        - city name and country code divided by comma, use ISO 3166 country codes cnt number of days returned (from 1 to 16)
+                    <br>
+                    <span class="param">z</span>
+                        - city name and country code divided by comma, use ISO 3166 country codes cnt number of days returned (from 1 to 16)
+                    <br>
+                    <h4>OUTPUT:</h4>
+                    <span class="param">q</span>
+                        - city name and country code divided by comma, use ISO 3166 country codes cnt number of days returned (from 1 to 16)
+                    <br>
+                    <span class="param">z</span>
+                        - city name and country code divided by comma, use ISO 3166 country codes cnt number of days returned (from 1 to 16)
+                    <br>
+                </div>
+                <div class="example">
+                    <div class="example_title">Example</div>
+                    <div class="action">
+                        Call 7 days forecast by city name in XML format and metric units 
+                    </div>
+                    <blockquote class="url">
+                         api.openweathermap.org/data/2.5/forecast/daily?q=London&mode=xml&units=metric&cnt=7
+                    </blockquote>
+                    <div class="response">
+                        {"cod":"200","message":0.0032,
+                        "city":{"id":1851632,"name":"Shuzenji",
+                        "coord":{"lon":138.933334,"lat":34.966671},
+                        "country":"JP"},
+                        "cnt":10,
+                        "list":[{
+                        "dt":1406080800,
+                        "temp":{
+                        "day":297.77,
+                        "min":293.52,
+                        "max":297.77,
+                        "night":293.52,
+                        "eve":297.77,
+                        "morn":297.77},
+                        "pressure":925.04,
+                        "humidity":76,
+                        "weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}],}
+                        ]}
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+        </main>
+        
+        <footer>
+            (c) 2016, Волих Роман
+        </footer>
+    </body>
+</html>
