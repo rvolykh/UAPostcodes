@@ -3,8 +3,9 @@ package com.pikaso.database;
 
 import java.sql.SQLException;
 
+import com.pikaso.constants.Constants;
+
 public class DataSourceRepository {
-    private final static String FAILED_JDBC_DRIVER = "Failed to create JDBC Driver";
     private static volatile DataSourceRepository instance = null;
 
     private DataSourceRepository() {
@@ -26,7 +27,7 @@ public class DataSourceRepository {
             return new DataSource(new com.mysql.jdbc.Driver(),
                    "jdbc:mysql://localhost/uapostcodes_db", "root", "root");
         } catch (SQLException e) {
-            throw new RuntimeException(FAILED_JDBC_DRIVER, e);
+            throw new RuntimeException(Constants.FAILED_JDBC_DRIVER, e);
         }
     }
 }

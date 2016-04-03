@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.pikaso.constants.Constants;
+
 public class DBConnection {
-    private final static String FAILED_REGISTRATE_DRIVER = "Failed to Registrate JDBC Driver";
     private static volatile DBConnection instance = null;
 
     private Connection connection = null;
@@ -23,7 +24,7 @@ public class DBConnection {
                     try {
                         DriverManager.registerDriver(dataSource.getJdbcDriver());
                     } catch (SQLException e) {
-                        throw new RuntimeException(FAILED_REGISTRATE_DRIVER);
+                        throw new RuntimeException(Constants.FAILED_REGISTRATE_DRIVER);
                     }
                 }
             }
@@ -33,7 +34,7 @@ public class DBConnection {
 
     public static DBConnection get() {
         if (instance == null) {
-            throw new RuntimeException(FAILED_REGISTRATE_DRIVER);
+            throw new RuntimeException(Constants.FAILED_REGISTRATE_DRIVER);
         }
         return instance;
     }
@@ -46,7 +47,7 @@ public class DBConnection {
                         connection = DriverManager.getConnection(dataSource.getConnectionUrl(),
                                 dataSource.getUsername(), dataSource.getPassword());
                     } catch (SQLException e) {
-                        throw new RuntimeException(FAILED_REGISTRATE_DRIVER, e);
+                        throw new RuntimeException(Constants.FAILED_REGISTRATE_DRIVER, e);
                     }
                 }
             }
@@ -60,7 +61,7 @@ public class DBConnection {
                 try {
                     instance.getConnection().close();
                 } catch (SQLException e) {
-                    throw new RuntimeException(FAILED_REGISTRATE_DRIVER, e);
+                    throw new RuntimeException(Constants.FAILED_REGISTRATE_DRIVER, e);
                 }
             }
         }

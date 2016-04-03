@@ -3,31 +3,14 @@ package com.pikaso.rest.dao;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.pikaso.constants.Constants;
 import com.pikaso.database.DBConnection;
 import com.pikaso.entity.District;
 
 public class DistrictDao extends ADao<District>{
-    public static enum DistrictDBQueries {
-        GET_BY_ID("SELECT * FROM District WHERE id = '%s';"),
-        GET_BY_FIELD("SELECT * FROM District WHERE %s = '%s';"),
-        GET_ALL("SELECT * FROM District;");
-        private String query;
 
-        private DistrictDBQueries(String query) {
-            this.query = query;
-        }
-
-        @Override
-        public String toString() {
-            return query;
-        }
-    }
-   
     public DistrictDao(){
-        super();
-        for (DistrictDBQueries districtDBQueries : DistrictDBQueries.values()) {
-            sqlQueries.put(districtDBQueries.name(), districtDBQueries);
-        }
+        super(Constants.TABLE_NAME_DISTRICT);
     }
     
     @Override
@@ -35,15 +18,10 @@ public class DistrictDao extends ADao<District>{
         Statement statement;
         try {
             statement = DBConnection.get().getConnection().createStatement();
-            String sql = "CREATE TABLE District " +
-                    "(id INTEGER not NULL, " +
-                    " name VARCHAR(255), " + 
-                    " regionID INTEGER, " + 
-                    " PRIMARY KEY ( id ))"; 
-            statement.executeUpdate(sql);
+            statement.executeUpdate(Constants.QUERY_CREATE_TABLE_DISTRICT);
             statement.close();
         } catch (SQLException e) {
-            throw new RuntimeException(FAIL_QUERY_EXECUTE, e);
+            throw new RuntimeException(Constants.FAIL_QUERY_EXECUTE, e);
         }
        
     }

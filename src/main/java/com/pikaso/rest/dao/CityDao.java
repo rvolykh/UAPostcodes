@@ -1,39 +1,16 @@
 package com.pikaso.rest.dao;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.springframework.beans.support.PagedListHolder;
-
+import com.pikaso.constants.Constants;
 import com.pikaso.database.DBConnection;
 import com.pikaso.entity.City;
-import com.pikaso.pageable.PageHolder;
 
 public class CityDao extends ADao<City> {
-    public static enum CityDBQueries {
-        GET_BY_ID("SELECT * FROM City WHERE id = '%s';"), 
-        GET_BY_FIELD("SELECT * FROM City WHERE %s = '%s';"), 
-        GET_ALL("SELECT * FROM City;");
-        private String query;
-
-        private CityDBQueries(String query) {
-            this.query = query;
-        }
-
-        @Override
-        public String toString() {
-            return query;
-        }
-    }
 
     public CityDao() {
-        super();
-        for (CityDBQueries cityDBQueries : CityDBQueries.values()) {
-            sqlQueries.put(cityDBQueries.name(), cityDBQueries);
-        }
+        super(Constants.TABLE_NAME_CITY);
     }
 
     @Override
@@ -41,9 +18,7 @@ public class CityDao extends ADao<City> {
         Statement statement;
         try {
             statement = DBConnection.get().getConnection().createStatement();
-            String sql = "CREATE TABLE City " + "(id INTEGER not NULL, " + " name VARCHAR(255), "
-                    + " postalcode VARCHAR(10), " + " districtID INTEGER, " + " PRIMARY KEY ( id ))";
-            statement.executeUpdate(sql);
+            statement.executeUpdate(Constants.QUERY_CREATE_TABLE_CITY);
             statement.close();
         } catch (SQLException e) {
             throw new RuntimeException("lolka", e);

@@ -17,7 +17,7 @@ import com.pikaso.rest.service.IApiService;
 
 @Path("/")
 public class ApiController {
-    IApiService apiService = new ApiService();
+    private IApiService apiService = new ApiService();
 
     @GET
     @Path("/regions")

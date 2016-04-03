@@ -4,6 +4,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.pikaso.constants.Constants;
 import com.pikaso.database.DBConnection;
 import com.pikaso.database.DataSourceRepository;
 import com.pikaso.rest.dao.CityDao;
@@ -15,17 +16,17 @@ public class InitDB {
         DatabaseMetaData meta;
         try {
            meta = DBConnection.get(DataSourceRepository.get().getMySql()).getConnection().getMetaData();
-           ResultSet rs = meta.getTables(null, null, "City", null);
+           ResultSet rs = meta.getTables(null, null, Constants.TABLE_NAME_CITY, null);
            if(!rs.next()){
                new CityDao().createTable();
            }
            rs.close();
-           rs = meta.getTables(null, null, "District", null);
+           rs = meta.getTables(null, null, Constants.TABLE_NAME_DISTRICT, null);
            if(!rs.next()){
                new DistrictDao().createTable();
            }
            rs.close();
-           rs = meta.getTables(null, null, "Region", null);
+           rs = meta.getTables(null, null, Constants.TABLE_NAME_REGION, null);
            if(!rs.next()){
                new RegionDao().createTable();
            }
