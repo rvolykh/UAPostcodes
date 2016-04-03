@@ -1,10 +1,11 @@
 package com.pikaso.rest.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.pikaso.constants.Constants;
-import com.pikaso.database.DBConnection;
+import com.pikaso.database.ConnectionPool;
 import com.pikaso.entity.City;
 
 public class CityDao extends ADao<City> {
@@ -15,12 +16,21 @@ public class CityDao extends ADao<City> {
 
     @Override
     public void createTable() {
-        Statement statement;
+        Connection connection = null;
+        Statement statement = null;
         try {
-            statement = DBConnection.get().getConnection().createStatement();
-            statement.executeUpdate(Constants.QUERY_CREATE_TABLE_CITY);
-            statement.close();
+            if (connection != null & statement != null) {
+                connection = ConnectionPool.getInstance().getConnection();
+                statement = connection.createStatement();
+                statement.executeUpdate(Constants.QUERY_CREATE_TABLE_CITY);
+                statement.close();
+                connection.close();
+            } else {
+                // TODO:
+                throw new RuntimeException("lolka");
+            }
         } catch (SQLException e) {
+            // TODO:
             throw new RuntimeException("lolka", e);
         }
 

@@ -1,5 +1,6 @@
 package com.pikaso.spring.dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -7,21 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pikaso.constants.Constants;
-import com.pikaso.database.DBConnection;
+import com.pikaso.database.ConnectionPool;
 import com.pikaso.entity.City;
 import com.pikaso.pageable.PageHolder;
 
-public class ExampleDao implements IExampleDao {
 
+public class ExampleDao implements IExampleDao {
+    
     @Override
     public PageHolder<City> getAllPageable(int start, int count) {
         PageHolder<City> result;
         List<City> all = new ArrayList<City>();
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         String[] queryResult;
         try {
-            statement = DBConnection.get().getConnection().createStatement();
+            connection = ConnectionPool.getInstance().getConnection();
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(String.format(Constants.GET_ALL_PAGEABLE, start, count));
             while (resultSet.next()) {
                 queryResult = new String[resultSet.getMetaData().getColumnCount()];
@@ -47,6 +51,13 @@ public class ExampleDao implements IExampleDao {
                     // TODO Warning
                 }
             }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    // TODO Warning
+                }
+            }
         }
         if (all.isEmpty()) {
             throw new RuntimeException(String.format(Constants.EMPTY_RESULTSET, Constants.GET_ALL_PAGEABLE));
@@ -60,10 +71,12 @@ public class ExampleDao implements IExampleDao {
     @Override
     public int getAllCount() {
         int count = 0;
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = DBConnection.get().getConnection().createStatement();
+            connection = ConnectionPool.getInstance().getConnection();
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(Constants.GET_ALL_PAGEABLE_COUNT);
             while (resultSet.next()) {
                 count = resultSet.getInt(1);
@@ -81,6 +94,13 @@ public class ExampleDao implements IExampleDao {
             if (statement != null) {
                 try {
                     statement.close();
+                } catch (SQLException e) {
+                    // TODO Warning
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
                 } catch (SQLException e) {
                     // TODO Warning
                 }

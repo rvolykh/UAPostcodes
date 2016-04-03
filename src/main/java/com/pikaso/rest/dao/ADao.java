@@ -1,5 +1,6 @@
 package com.pikaso.rest.dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pikaso.constants.Constants;
-import com.pikaso.database.DBConnection;
+import com.pikaso.database.ConnectionPool;
 
 public abstract class ADao<TEntity> implements IDao<TEntity> {
     private String tableName;
@@ -23,11 +24,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
     @Override
     public TEntity getById(int id) {
         TEntity entity = null;
+        Connection connection = null;
         Statement statement = null;
-        ResultSet resultSet = null;
+        ResultSet resultSet = null;    
         String[] queryResult;
         try {
-            statement = DBConnection.get().getConnection().createStatement();
+            connection = ConnectionPool.getInstance().getConnection();
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(String.format(Constants.QUERY_GET_BY_ID, tableName, id));
             if (resultSet.next()) {
                 queryResult = new String[resultSet.getMetaData().getColumnCount()];
@@ -56,6 +59,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
                     // TODO Warning
                 }
             }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception ex) {
+                    // TODO Warning
+                }
+            }
         }
         return entity;
     }
@@ -63,11 +73,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
     @Override
     public List<TEntity> getByFieldName(String fieldName, String text) {
         List<TEntity> all = new ArrayList<TEntity>();
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         String[] queryResult;
         try {
-            statement = DBConnection.get().getConnection().createStatement();
+            connection = ConnectionPool.getInstance().getConnection();
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(String.format(Constants.QUERY_GET_BY_FIELD, tableName, fieldName, text));
             while (resultSet.next()) {
                 queryResult = new String[resultSet.getMetaData().getColumnCount()];
@@ -93,6 +105,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
                     // TODO Warning
                 }
             }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception ex) {
+                    // TODO Warning
+                }
+            }
         }
         if (all.isEmpty()) {
             throw new RuntimeException(String.format(Constants.EMPTY_RESULTSET, Constants.QUERY_GET_BY_FIELD));
@@ -102,11 +121,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
     
     public List<TEntity> getAll() {
         List<TEntity> all = new ArrayList<TEntity>();
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         String[] queryResult;
         try {
-            statement = DBConnection.get().getConnection().createStatement();
+            connection = ConnectionPool.getInstance().getConnection();
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(String.format(Constants.QUERY_GET_ALL, tableName));
             while (resultSet.next()) {
                 queryResult = new String[resultSet.getMetaData().getColumnCount()];
@@ -128,6 +149,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
             if (statement != null) {
                 try {
                     statement.close();
+                } catch (Exception ex) {
+                    // TODO Warning
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
                 } catch (Exception ex) {
                     // TODO Warning
                 }
