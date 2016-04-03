@@ -4,12 +4,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.pikaso.database.DBConnection;
-import com.pikaso.rest.entity.District;
+import com.pikaso.entity.District;
 
 public class DistrictDao extends ADao<District>{
     public static enum DistrictDBQueries {
         GET_BY_ID("SELECT * FROM District WHERE id = '%s';"),
-        GET_BY_FIELD("SELECT * FROM District WHERE %s = '%s';");
+        GET_BY_FIELD("SELECT * FROM District WHERE %s = '%s';"),
+        GET_ALL("SELECT * FROM District;");
         private String query;
 
         private DistrictDBQueries(String query) {

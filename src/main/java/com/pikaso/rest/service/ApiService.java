@@ -2,12 +2,12 @@ package com.pikaso.rest.service;
 
 import java.util.List;
 
+import com.pikaso.entity.City;
+import com.pikaso.entity.District;
+import com.pikaso.entity.Region;
 import com.pikaso.rest.dao.CityDao;
 import com.pikaso.rest.dao.DistrictDao;
 import com.pikaso.rest.dao.RegionDao;
-import com.pikaso.rest.entity.City;
-import com.pikaso.rest.entity.District;
-import com.pikaso.rest.entity.Region;
 
 public class ApiService implements IApiService{
     

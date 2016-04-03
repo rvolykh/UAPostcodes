@@ -9,9 +9,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.pikaso.rest.entity.City;
-import com.pikaso.rest.entity.District;
-import com.pikaso.rest.entity.Region;
+import com.pikaso.entity.City;
+import com.pikaso.entity.District;
+import com.pikaso.entity.Region;
 import com.pikaso.rest.service.ApiService;
 import com.pikaso.rest.service.IApiService;
 

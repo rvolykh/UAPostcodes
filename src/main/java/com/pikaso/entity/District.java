@@ -1,17 +1,18 @@
-package com.pikaso.rest.entity;
+package com.pikaso.entity;
 
-public class Region {
+public class District {
     private Integer id;
     private String name;
+    private Integer idRegion;
     
-    
-    public Region(){
+    public District(){
         
     }
 
-    public Region(Integer id, String name) {
-        this.name = name;
+    public District(Integer id, String name, Integer idRegion) {
         this.id = id;
+        this.name = name;
+        this.idRegion = idRegion;
     }
 
     public String getName() {
@@ -20,6 +21,14 @@ public class Region {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getIdRegion() {
+        return idRegion;
+    }
+
+    public void setIdRegion(Integer idRegion) {
+        this.idRegion = idRegion;
     }
 
     public Integer getId() {

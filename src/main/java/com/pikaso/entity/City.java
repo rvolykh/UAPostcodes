@@ -1,4 +1,4 @@
-package com.pikaso.rest.entity;
+package com.pikaso.entity;
 
 public class City{
     private Integer id;

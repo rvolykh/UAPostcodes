@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.pikaso.database.DBConnection;
+import com.pikaso.entity.City;
 
 public abstract class ADao<TEntity> implements IDao<TEntity> {
     protected final static String QUERY_NOT_FOUND = "Query not found %s";
@@ -86,6 +87,51 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
         try {
             statement = DBConnection.get().getConnection().createStatement();
             resultSet = statement.executeQuery(String.format(query, fieldName, text));
+            while (resultSet.next()) {
+                queryResult = new String[resultSet.getMetaData().getColumnCount()];
+                for (i = 0; i < queryResult.length; i++) {
+                    queryResult[i] = resultSet.getString(i+1);
+                }
+                all.add(createInstance(queryResult));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(DATABASE_READING_ERROR, e);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (Exception ex) {
+                    // TODO Warning
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (Exception ex) {
+                    // TODO Warning
+                }
+            }
+        }
+        if (all.isEmpty()) {
+            throw new RuntimeException(String.format(EMPTY_RESULTSET, query));
+        }
+        return all;
+    }
+    
+    public List<TEntity> getAll() {
+        List<TEntity> all = new ArrayList<TEntity>();
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String query = sqlQueries.get("GET_ALL").toString();
+        String[] queryResult;
+        int i;
+        if (query == null) {
+            throw new RuntimeException(String.format(QUERY_NOT_FOUND,
+                    "GET_ALL"));
+        }
+        try {
+            statement = DBConnection.get().getConnection().createStatement();
+            resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 queryResult = new String[resultSet.getMetaData().getColumnCount()];
                 for (i = 0; i < queryResult.length; i++) {
