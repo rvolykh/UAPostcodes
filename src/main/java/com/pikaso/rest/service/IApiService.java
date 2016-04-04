@@ -11,4 +11,6 @@ public interface IApiService {
     List<District> getDistricts(int regionId);
     List<Region> getRegions();
     City getCity(int id);
+    Region getRegion(int id);
+    District getDistrict(int id);
 }

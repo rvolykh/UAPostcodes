@@ -28,15 +28,7 @@ public class ApiController {
     }
 
     @GET
-    @Path("/region")
-    @Produces("text/plain")
-    public String getRegion(@QueryParam("id") String districtId) {
-        String result = "Not implemented yet";
-        return result;
-    }
-
-    @GET
-    @Path("/district")
+    @Path("/districts")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getDistricts(@QueryParam("id") String regionId) {
         List<District> districts = apiService.getDistricts(Integer.parseInt(regionId));
@@ -54,9 +46,32 @@ public class ApiController {
     @GET
     @Path("/postcode")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getPostcode(@QueryParam("id") String cityId) {
-        City city = apiService.getCity(Integer.parseInt(cityId));
+    public Response getPostcode(@QueryParam("id") Integer cityId) {
+        City city = apiService.getCity(cityId);
         return Response.status(200).entity(city.toString()).build();
+    }
+    
+    @GET
+    @Path("/region")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Response getRegion(@QueryParam("id") Integer regionId) {
+        Region region = apiService.getRegion(regionId);
+        return Response.status(200).entity(region.toString()).build();
+    }
+    
+    @GET
+    @Path("/district")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Response getDistrict(@QueryParam("id") Integer districtId) {
+        District district = apiService.getDistrict(districtId);
+        return Response.status(200).entity(district.toString()).build();
+    }
+    
+    @GET
+    @Path("/city")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Response getCity(@QueryParam("id") Integer cityId) {
+        return getPostcode(cityId);//same as '/postcode?id={cityId}'
     }
 
 }

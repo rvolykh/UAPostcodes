@@ -10,6 +10,7 @@ public final class Constants {
     public static final String EMPTY_RESULTSET = "Empty ResultSet by Query %s";
     public static final String DATABASE_READING_ERROR = "Database Reading Error";
     public static final String FAIL_QUERY_EXECUTE = "Can't execute queury %s";
+    public static final String DATABASE_CONNECTION_ERROR = "Can not connect to database";
 
     /* Tables names */
     public static final String TABLE_NAME_CITY = "City";

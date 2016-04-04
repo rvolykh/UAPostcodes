@@ -37,5 +37,16 @@ public class ApiService implements IApiService{
         City city = cityDao.getById(id);
         return city;
     }
+    
+    @Override
+    public Region getRegion(int id) {
+        return regiontDao.getById(id);
+    }
+    
+    @Override
+    public District getDistrict(int id) {
+        return districtDao.getById(id);
+    }
+
 
 }

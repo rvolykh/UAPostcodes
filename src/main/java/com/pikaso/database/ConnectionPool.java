@@ -4,6 +4,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.pikaso.constants.Constants;
+
 public final class ConnectionPool {
     @SuppressWarnings("unused")
     private static final ConnectionPool connectionPool = new ConnectionPool();
@@ -20,11 +22,8 @@ public final class ConnectionPool {
 
     public static DataSource getInstance() {
         if (dataSource == null)
-            throw new RuntimeException("Can not connect to database");
+            throw new RuntimeException(Constants.DATABASE_CONNECTION_ERROR);
         return dataSource;
     }
-    
-    
-    
 
 }

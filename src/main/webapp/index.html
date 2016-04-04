@@ -14,65 +14,188 @@
     <div id="slogan">ПОШТОВІ ІНДЕКСИ УКРАЇНИ</div>
   </header>
   <nav>
-      <ul>
-          <a href="index.html"><li class="selected-nav">Головна</li></a>
-          <a href="example"><li>Поштові індекси</li></a>
-      </ul>
+    <ul>
+      <a href="index.html"><li class="selected-nav">Головна</li></a>
+      <a href="example"><li>Поштові індекси</li></a>
+    </ul>
   </nav>
   <main>
   <h1>Сервіс</h1>
   <div class="text_wrapper">
-    <p class="text">REST (скор. англ. Representational State
-      Transfer, «передача репрезентативного стану») — підхід до
-      архітектури мережевих протоколів, які забезпечують доступ до
-      інформаційних ресурсів. Був описаний і популяризований у 2000 році
-      Роєм Філдінгом (Roy Fielding), одним із творців протоколу HTTP.
-      Найвідомішою системою, побудованою переважно за архітектурою REST,
-      є сучасна Всесвітня павутина.</p>
+    <p class="text">
+      UA Postal codes - це RESTfull сервіс, за допомогою якого можна
+      отримати інформацію по поштових індексах України, а також
+      інформацію по областях, районах та населених пунктах. Передача
+      інформації здійснюється у JSON форматі. Дані взято із ресурсу: <a
+        href="http://ukrindex.ru" target="_blank">http://ukrindex.ru</a>
+    </p>
   </div>
-  <h1>Документація</h1>
+  <h1>Документація по API</h1>
   <div class="text_wrapper">
-    <div class="description">Description: You can search 16 day
-      weather forecast with daily average parameters by city name. All
-      weather data can be obtained in JSON, XML or HTML format.</div>
+    <div class="description">Опис: Ви можете отримати список усіх
+      областей України (включаючи АРК).</div>
     <div class="api">
-      <h3 class="doc_title">API call:</h3>
-      <blockquote class="url">
-        api.openweathermap.org/data/2.5/forecast/daily?q={city
-        name},{country code}&amp;cnt={cnt}</blockquote>
-      <h3 class="doc_title">Parameters:</h3>
-      <h4>INPUT:</h4>
-      <span class="param">q</span> - city name and country code divided
-      by comma, use ISO 3166 country codes cnt number of days returned
-      (from 1 to 16) <br> <span class="param">z</span> - city name
-      and country code divided by comma, use ISO 3166 country codes cnt
-      number of days returned (from 1 to 16) <br>
-      <h4>OUTPUT:</h4>
-      <span class="param">q</span> - city name and country code divided
-      by comma, use ISO 3166 country codes cnt number of days returned
-      (from 1 to 16) <br> <span class="param">z</span> - city name
-      and country code divided by comma, use ISO 3166 country codes cnt
-      number of days returned (from 1 to 16) <br>
+      <h3 class="doc_title">API виклик:</h3>
+      <blockquote class="url">UAPostcodes/api/regions</blockquote>
+      <h3 class="doc_title">Параметри:</h3>
+      <h4>Вихідні:</h4>
+      <span class="param">id</span> - ідентифікатор області (відповідає
+      порядковому номеру області)<br> <span class="param">name</span>
+      - назва області <br>
     </div>
     <div class="example">
-      <div class="example_title">Example</div>
-      <div class="action">Call 7 days forecast by city name in XML
-        format and metric units</div>
-      <blockquote class="url">
-        api.openweathermap.org/data/2.5/forecast/daily?q=London&amp;mode=xml&amp;units=metric&amp;cnt=7
-      </blockquote>
-      <div class="response">{"cod":"200","message":0.0032,
-        "city":{"id":1851632,"name":"Shuzenji",
-        "coord":{"lon":138.933334,"lat":34.966671}, "country":"JP"},
-        "cnt":10, "list":[{ "dt":1406080800, "temp":{ "day":297.77,
-        "min":293.52, "max":297.77, "night":293.52, "eve":297.77,
-        "morn":297.77}, "pressure":925.04, "humidity":76,
-        "weather":[{"id":803,"main":"Clouds","description":"broken
-        clouds","icon":"04d"}],} ]}</div>
+      <div class="example_title">Приклад</div>
+      <div class="action">Отримати всі області України</div>
+      <blockquote class="url">UAPostcodes/api/regions</blockquote>
+      <div class="response">[{"id":"1", "name":"Автономна
+        республіка Крим"}, {"id":"2", "name":"Вінницька область"},
+        {"id":"3", "name":"Волинська область"}, {"id":"4",
+        "name":"Дніпропетровська область"}, {"id":"5", "name":"Донецька
+        область"}, {"id":"6", "name":"Житомирська область"}, {"id":"7",
+        "name":"Закарпатська область"}, {"id":"8", "name":"Запорізька
+        область"}, {"id":"9", "name":"Івано-Франківська область"},
+        {"id":"10", "name":"Київ, місто"}, {"id":"11", "name":"Київська
+        область"}, {"id":"12", "name":"Кіровоградська область"},
+        {"id":"13", "name":"Луганська область"}, {"id":"14",
+        "name":"Львівська область"}, {"id":"15", "name":"Миколаївська
+        область"}, {"id":"16", "name":"Одеська область"}, {"id":"17",
+        "name":"Полтавська область"}, {"id":"18", "name":"Рівненська
+        область"}, {"id":"19", "name":"Севастополь, місто"}, {"id":"20",
+        "name":"Сумська область"}, {"id":"21", "name":"Тернопільська
+        область"}, {"id":"22", "name":"Харківська область"}, {"id":"23",
+        "name":"Херсонська область"}, {"id":"24", "name":"Хмельницька
+        область"}, {"id":"25", "name":"Черкаська область"}, {"id":"26",
+        "name":"Чернівецька область"}, {"id":"27", "name":"Чернігівська
+        область"}]</div>
     </div>
   </div>
 
+  <div class="text_wrapper">
+    <div class="description">Опис: Ви можете отримати список усіх
+      районів обраної області України.</div>
+    <div class="api">
+      <h3 class="doc_title">API виклик:</h3>
+      <blockquote class="url">UAPostcodes/api/districts?id={regionId}</blockquote>
+      <h3 class="doc_title">Параметри:</h3>
+      <h4>Вхідні:</h4>
+      <span class="param">regionId</span> - ідентифікатор області, якої
+      Ви бажаєте получити список районів.<br>
+      <h4>Вихідні:</h4>
+      <span class="param">id</span> - ідентифікатор району (відповідає
+      порядковому номеру усіх районів різних областей)<br> <span
+        class="param">name</span> - назва району<br>
+    </div>
+    <div class="example">
+      <div class="example_title">Приклад</div>
+      <div class="action">Отримати всі райони Львівської області</div>
+      <blockquote class="url">UAPostcodes/api/districts?id=14</blockquote>
+      <div class="response">[{"id":"287", "name":"Борислав,
+        місто"}, {"id":"288", "name":"Бродівський район"}, {"id":"289",
+        "name":"Буський район"}, {"id":"290", "name":"Городоцький
+        район"}, {"id":"291", "name":"Дрогобицький район"}, {"id":"292",
+        "name":"Жидачівський район"}, {"id":"293", "name":"Жовківський
+        район"}, {"id":"294", "name":"Золочівський район"}, {"id":"295",
+        "name":"Кам'янсько-Бузький"}, {"id":"296", "name":"Львів,
+        місто"}, {"id":"297", "name":"Миколаївський район"},
+        {"id":"298", "name":"Мостиський район"}, {"id":"299",
+        "name":"Перемишлянський район"}, {"id":"300",
+        "name":"Пустомитівський район"}, {"id":"301",
+        "name":"Радехівський район"}, {"id":"302", "name":"Самбірський
+        район"}, {"id":"303", "name":"Сколівський район"}, {"id":"304",
+        "name":"Сокальський район"}, {"id":"305",
+        "name":"Старосамбірський район"}, {"id":"306",
+        "name":"Стрийський район"}, {"id":"307", "name":"Трускавець,
+        місто"}, {"id":"308", "name":"Турківський район"}, {"id":"309",
+        "name":"Червоноград, місто"}, {"id":"310", "name":"Яворівський
+        район"}]</div>
+    </div>
+  </div>
 
+  <div class="text_wrapper">
+    <div class="description">Опис: Ви можете отримати список усіх
+      населених пунктів обраного району</div>
+    <div class="api">
+      <h3 class="doc_title">API виклик:</h3>
+      <blockquote class="url">UAPostcodes/api/cities?id={districtId}</blockquote>
+      <h3 class="doc_title">Параметри:</h3>
+      <h4>Вхідні:</h4>
+      <span class="param">districtId</span> - ідентифікатор району,
+      список населених пунктів якого Ви бажаєте получити.<br>
+      <h4>Вихідні:</h4>
+      <span class="param">id</span> - ідентифікатор населеного пункту (відповідає
+      порядковому номеру усіх міст різних районів, областей)<br> 
+      <span class="param">name</span> - назва населеного пункту<br>
+      <span class="param">postcode</span> - поштовий індекс населеного пункту<br>
+    </div>
+    <div class="example">
+      <div class="example_title">Приклад</div>
+      <div class="action">Отримати всі населені пункти
+        Пустомитівського району, Львівської області</div>
+      <blockquote class="url">UAPostcodes/api/cities?id=299</blockquote>
+      <div class="response">[{"id":"7583", "name":"Бачів",
+        "postcode":"81264"}, {"id":"7584", "name":"Бібрка",
+        "postcode":"81220"}, {"id":"7585", "name":"Біле",
+        "postcode":"81235"}, {"id":"7586", "name":"Болотня",
+        "postcode":"81261"}, {"id":"7587", "name":"Борщів",
+        "postcode":"81232"}, {"id":"7588", "name":"Брюховичі",
+        "postcode":"81244"}, {"id":"7589", "name":"Великі Глібовичі",
+        "postcode":"81228"}, {"id":"7590", "name":"Вишнівчик",
+        "postcode":"81231"}, {"id":"7591", "name":"Вовків",
+        "postcode":"81241"}, {"id":"7592", "name":"Волощино",
+        "postcode":"81229"}, {"id":"7593", "name":"Ганачівка",
+        "postcode":"81211"}, {"id":"7594", "name":"Глібовичі",
+        "postcode":"81226"}, {"id":"7595", "name":"Добряничі",
+        "postcode":"81252"}, {"id":"7596", "name":"Дунаїв",
+        "postcode":"81234"}, {"id":"7597", "name":"Дусанів",
+        "postcode":"81263"}, {"id":"7598", "name":"Іванівка",
+        "postcode":"81262"}, {"id":"7599", "name":"Кореличі",
+        "postcode":"81254"}, {"id":"7600", "name":"Коросне",
+        "postcode":"81215"}, {"id":"7601", "name":"Костенів",
+        "postcode":"81245"}, {"id":"7602", "name":"Лагодів",
+        "postcode":"81212"}, {"id":"7603", "name":"Лани",
+        "postcode":"81250"}, {"id":"7604", "name":"Липівці",
+        "postcode":"81230"}, {"id":"7605", "name":"Любешка",
+        "postcode":"81251"}, {"id":"7606", "name":"Мерещів",
+        "postcode":"81242"}, {"id":"7607", "name":"Міжгір'я",
+        "postcode":"81216"}, {"id":"7608", "name":"Осталовичі",
+        "postcode":"81243"}, {"id":"7609", "name":"Перемишляни",
+        "postcode":"81200"}, {"id":"7610", "name":"Підгородище",
+        "postcode":"81214"}, {"id":"7611", "name":"Подусів",
+        "postcode":"81260"}, {"id":"7612", "name":"Романів",
+        "postcode":"81213"}, {"id":"7613", "name":"Свірж",
+        "postcode":"81225"}, {"id":"7614", "name":"Станимир",
+        "postcode":"81210"}, {"id":"7615", "name":"Стоки",
+        "postcode":"81224"}, {"id":"7616", "name":"Стрілки",
+        "postcode":"81223"}, {"id":"7617", "name":"Суходіл",
+        "postcode":"81227"}, {"id":"7618", "name":"Тучне",
+        "postcode":"81253"}, {"id":"7619", "name":"Ушковичі",
+        "postcode":"81240"}, {"id":"7620", "name":"Чемеринці",
+        "postcode":"81233"}, {"id":"7621", "name":"Шпильчина",
+        "postcode":"81222"}]</div>
+    </div>
+  </div>
+  
+    <div class="text_wrapper">
+    <div class="description">Опис: Ще декілька корисних API (TODO)</div>
+    <div class="api">
+      <h3 class="doc_title">API виклик:</h3>
+      <blockquote class="url">UAPostcodes/api/postcode?id={cityId}</blockquote>
+      <blockquote class="url">UAPostcodes/api/city?id={cityId} [Теж саме що й /postcode]</blockquote>
+      <blockquote class="url">UAPostcodes/api/region?id={regionId}</blockquote>
+      <blockquote class="url">UAPostcodes/api/district?id={districtId}</blockquote>
+      <h3 class="doc_title">Параметри:</h3>
+      <h4>Вхідні:</h4>
+      <span class="param">TODO</span> - TODO<br>
+      <h4>Вихідні:</h4>
+      <span class="param">TODO</span> - TODO<br>
+    </div>
+    <div class="example">
+      <div class="example_title">Приклад</div>
+      <div class="action">TODO</div>
+      <blockquote class="url">TODO</blockquote>
+      <div class="response">TODO</div>
+    </div>
+  </div>
 
   </main>
 
