@@ -17,15 +17,21 @@
     <div id="logo"></div>
     <div id="slogan">ПОШТОВІ ІНДЕКСИ УКРАЇНИ</div>
   </header>
+  <nav>
+      <ul>
+          <a href="index.html"><li>Головна</li></a>
+          <a href="example"><li class="selected-nav">Поштові індекси</li></a>
+      </ul>
+  </nav>
 
   <main>
-  <h1>Сервіс</h1>
+  <h1>Поштові індекси населених пунктів України</h1>
   <div class="text_wrapper">
-    <table>
+    <table class="cities_table">
       <tr>
         <th>№</th>
-        <th>City</th>
-        <th>Postal code</th>
+        <th>Населений пункт</th>
+        <th>Поштовий індекс</th>
       </tr>
       <c:forEach items="${cities.source}" var="city">
         <tr>
@@ -36,20 +42,24 @@
       </c:forEach>
     </table>
     <div class="pages">
-      <a href="example?page=0">First</a>
+      <a class="btn-page" href="example?page=0">First</a>
       <c:if test="${cities.page>0}">
-        <a href="example?page=${cities.page-1}">${cities.page-1}</a>
+        <a class="btn-page" href="example?page=${cities.page-1}">${cities.page-1}</a>
       </c:if>
-      <a id="selected_page" href="example?page=${cities.page}">${cities.page}</a>
+      <a class="btn-page selected-btn" href="#">${cities.page}</a>
       <c:if test="${cities.lastPage-1>=cities.page}">
-        <a href="example?page=${cities.page+1}">${cities.page+1}</a>
+        <a class="btn-page" href="example?page=${cities.page+1}">${cities.page+1}</a>
       </c:if>
-      <a href="example?page=${cities.lastPage}">Last</a>
+      <a class="btn-page" href="example?page=${cities.lastPage}">Last</a>
     </div>
   </div>
   </main>
 
-  <footer> (c) 2016, Волих Роман </footer>
+  <footer>
+    (c) 2016, Волих Роман<br>Feel free: <a
+      href="https://github.com/rvolykh/UAPostcodes">Github: UA
+      Postcodes</a>
+  </footer>
 </body>
 
 </html>

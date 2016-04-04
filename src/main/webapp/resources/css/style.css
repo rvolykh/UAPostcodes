@@ -161,3 +161,100 @@ footer {
 .doc_title {
   border-bottom: 2px solid #d8d8d8;
 }
+
+/* EXAMPLE PAGE */
+.cities_table {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 4px outset black;
+    
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 40px black;
+    color: #000;
+    font-weight: 700;
+    
+}
+td,th {
+    border: 2px solid black;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+td:first-child, td:nth-child(3) {
+    width: 200px;
+}
+td:nth-child(2){
+    width: 70%;
+}
+th {
+    background-color: rgba(0,0,0,1);
+    color: #fff;
+    height: 30px;
+}
+tr:nth-child(odd) {
+    background-color: rgba(255,255,153,1);
+}
+tr:nth-child(even) {
+    background-color: rgba(135,206,250,1);
+}
+.pages {
+    width: 200px;
+    margin: 0 auto 15px auto;
+}
+.btn-page {
+    display: inline-block;
+    width: 17%;
+    background-color: #DCDCDC;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0px -21px black;
+    text-decoration: none;
+    color: black;
+}
+.btn-page:hover {
+    box-shadow: 2px 2px 5px black;
+}
+.selected-btn {
+    background-color: #708090;
+    box-shadow:none;
+    color: #fff;
+    font-weight: bold;
+}
+footer a, footer a:visited{
+    background-color: burlywood;
+    padding: 3px 10px;
+    color: blue;
+    border-radius: 45px;
+    line-height: 30px;
+}
+nav{
+    background-color: #000;
+    color: #fff;
+    margin-top: 5px;
+    height: 50px;
+    box-shadow: 0px 0px 50px #000;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    height: 100%;
+    padding-left: 0;
+}
+li {
+    display: inline-block;
+    margin: 0;
+    padding: 15px 37px 0;
+    height: 35px;
+}
+li:hover, .selected-nav {
+    cursor: pointer;
+    background-color: #C91818;
+    border-bottom: 5px solid white;
+    color: white;
+}
+ul a, ul a:visited {
+    color: #fff;
+}
