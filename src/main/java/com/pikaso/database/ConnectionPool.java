@@ -1,5 +1,6 @@
 package com.pikaso.database;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -14,7 +15,10 @@ public final class ConnectionPool {
 
     private ConnectionPool() {
         try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
+            InitialContext ic = new InitialContext();
+            Context initialContext = (Context) ic.lookup("java:comp/env");
+            dataSource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
+            //dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
         } catch (NamingException e) {
             // TODO msg, only log
         }
