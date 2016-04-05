@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.pikaso.constants.Constants;
-import com.pikaso.rest.context.InitDB;
 
 public final class ConnectionPool {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionPool.class);
@@ -23,8 +22,11 @@ public final class ConnectionPool {
         try {
             InitialContext ic = new InitialContext();
             Context initialContext = (Context) ic.lookup("java:comp/env");
-            dataSource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
-            //dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
+            if(initialContext.getEnvironment().isEmpty()){
+                dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
+            }else{
+                dataSource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
+            }
         } catch (NamingException e) {
             LOGGER.error("Can't establish connection with Database",e);
         }

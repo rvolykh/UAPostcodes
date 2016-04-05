@@ -37,8 +37,8 @@ public class DistrictDao extends ADao<District> {
                 LOGGER.error("Can't get Database connection");
             }
         } catch (SQLException e) {
-            LOGGER.error("Can't create table " + Constants.TABLE_NAME_CITY, e);
-            throw new RuntimeException("Can't create table " + Constants.TABLE_NAME_CITY, e);
+            LOGGER.error("Can't create table " + Constants.TABLE_NAME_DISTRICT, e);
+            throw new RuntimeException("Can't create table " + Constants.TABLE_NAME_DISTRICT, e);
         }
 
     }

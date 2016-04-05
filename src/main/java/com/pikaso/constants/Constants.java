@@ -2,7 +2,7 @@ package com.pikaso.constants;
 
 public final class Constants {
     public static final Integer PAGEABLE_PAGE_SIZE = 20;
-    
+
     /* Error messages */
     public static final String FAILED_JDBC_DRIVER = "Failed to create JDBC Driver";
     public static final String FAILED_REGISTRATE_DRIVER = "Failed to Registrate JDBC Driver";
@@ -26,9 +26,9 @@ public final class Constants {
     public static final String QUERY_CREATE_TABLE_DISTRICT = "CREATE TABLE District (id INTEGER not NULL, "
             + "name VARCHAR(255), regionID INTEGER, PRIMARY KEY ( id ))";
     public static final String QUERY_CREATE_TABLE_REGION = "CREATE TABLE Region (id INTEGER not NULL, "
-            + "name VARCHAR(255), PRIMARY KEY ( id ))"; 
-    
-    public static final String GET_ALL_PAGEABLE = "SELECT * FROM City LIMIT %d, %d;"; 
+            + "name VARCHAR(255), PRIMARY KEY ( id ))";
+
+    public static final String GET_ALL_PAGEABLE = "SELECT * FROM City LIMIT %d, %d;";
     public static final String GET_ALL_PAGEABLE_COUNT = "SELECT COUNT(*) FROM City;";
-    
+
 }

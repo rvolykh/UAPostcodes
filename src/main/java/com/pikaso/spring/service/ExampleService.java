@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.pikaso.constants.Constants;
 import com.pikaso.entity.City;
 import com.pikaso.pageable.PageHolder;
-import com.pikaso.spring.dao.ExampleDao;
 import com.pikaso.spring.dao.IExampleDao;
 
 public class ExampleService implements IExampleService{
