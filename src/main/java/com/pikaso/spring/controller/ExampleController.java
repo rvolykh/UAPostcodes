@@ -1,5 +1,7 @@
 package com.pikaso.spring.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,21 +14,23 @@ import com.pikaso.spring.service.IExampleService;
 
 @Controller
 public class ExampleController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExampleController.class);
+
     @Autowired
     private IExampleService exampleService;
-    
+
     @RequestMapping("/example")
-    public String postalTable(@RequestParam(value="page",required=false)Integer page, Model model) {
-        if(page==null || page==0){
-            PageHolder<City> cities = exampleService.getAllPageable(0);
-            cities.setPage(0);
-            model.addAttribute("cities", cities);
-        }else{
-            PageHolder<City> cities = exampleService.getAllPageable(page);
-            cities.setPage(page);
-            model.addAttribute("cities", cities);
+    public String postalTable(@RequestParam(value = "page", required = false) Integer page, Model model) {
+        if (page == null) {
+            page = 0;
         }
+        int lastPage = -1;//TODO: receive this value from Client
+        PageHolder<City> cities = exampleService.getAllPageable(page, lastPage);
+        cities.setPage(page);
+        model.addAttribute("cities", cities);
+
+        LOGGER.info("User ask for page = "+page);
         return "example";
     }
-    
+
 }

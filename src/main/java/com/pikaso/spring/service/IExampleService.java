@@ -4,5 +4,5 @@ import com.pikaso.entity.City;
 import com.pikaso.pageable.PageHolder;
 
 public interface IExampleService {
-    PageHolder<City> getAllPageable(int page);
+    PageHolder<City> getAllPageable(int page, int lastPage);
 }

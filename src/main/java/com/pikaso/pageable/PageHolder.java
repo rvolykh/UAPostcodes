@@ -13,7 +13,6 @@ public class PageHolder<T> {
     }
     
     public PageHolder(List<T> source) {
-        super();
         this.source = source;
     }
     public int getStart() {

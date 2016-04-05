@@ -5,9 +5,15 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.pikaso.constants.Constants;
+import com.pikaso.rest.context.InitDB;
 
 public final class ConnectionPool {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionPool.class);
+    
     @SuppressWarnings("unused")
     private static final ConnectionPool connectionPool = new ConnectionPool();
     
@@ -20,7 +26,7 @@ public final class ConnectionPool {
             dataSource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
             //dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
         } catch (NamingException e) {
-            // TODO msg, only log
+            LOGGER.error("Can't establish connection with Database",e);
         }
     }
 

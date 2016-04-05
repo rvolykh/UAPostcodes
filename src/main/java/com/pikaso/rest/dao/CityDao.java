@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.pikaso.constants.Constants;
 import com.pikaso.database.ConnectionPool;
 import com.pikaso.entity.City;
 
 public class CityDao extends ADao<City> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CityDao.class);
 
     public CityDao() {
         super(Constants.TABLE_NAME_CITY);
@@ -19,19 +23,22 @@ public class CityDao extends ADao<City> {
         Connection connection = null;
         Statement statement = null;
         try {
-            if (connection != null & statement != null) {
-                connection = ConnectionPool.getInstance().getConnection();
+            connection = ConnectionPool.getInstance().getConnection();
+            if (connection != null) {
                 statement = connection.createStatement();
-                statement.executeUpdate(Constants.QUERY_CREATE_TABLE_CITY);
-                statement.close();
+                if (statement != null) {
+                    statement.executeUpdate(Constants.QUERY_CREATE_TABLE_CITY);
+                    statement.close();
+                }else{
+                    LOGGER.error("Can't get Statement from Connection");
+                }
                 connection.close();
-            } else {
-                // TODO:
-                throw new RuntimeException("lolka");
+            }else{
+                LOGGER.error("Can't get Database connection");
             }
         } catch (SQLException e) {
-            // TODO:
-            throw new RuntimeException("lolka", e);
+            LOGGER.error("Can't create table " + Constants.TABLE_NAME_CITY, e);
+            throw new RuntimeException("Can't create table " + Constants.TABLE_NAME_CITY, e);
         }
 
     }

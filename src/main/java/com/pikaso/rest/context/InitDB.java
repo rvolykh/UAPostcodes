@@ -5,6 +5,9 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.pikaso.constants.Constants;
 import com.pikaso.database.ConnectionPool;
 import com.pikaso.rest.dao.CityDao;
@@ -12,7 +15,10 @@ import com.pikaso.rest.dao.DistrictDao;
 import com.pikaso.rest.dao.RegionDao;
 
 public class InitDB {
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitDB.class);
+    
     public static void okTables() {
+        
         DatabaseMetaData meta;
         try {
             Connection connection = ConnectionPool.getInstance().getConnection();
@@ -34,6 +40,7 @@ public class InitDB {
             rs.close();
             connection.close();
         } catch (SQLException e) {
+            LOGGER.error("Can't create datatables",e);
             throw new RuntimeException(e);
         }
     }
