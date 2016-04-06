@@ -32,9 +32,13 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
     public abstract void createTable();
 
     @Override
-    public TEntity getById(int id) {
+    public TEntity getById(String id) {
         TEntity entity = null;
         String query = String.format(Constants.QUERY_GET_BY_ID, tableName, id);
+        
+        if(id==null){
+            throw new ApiException("Value with this ID not exsist, table: "+this.getClass().getName());
+        } 
         
         try (Connection con = ConnectionPool.getInstance().getConnection();
                 PreparedStatement stat = con.prepareStatement(query);) {

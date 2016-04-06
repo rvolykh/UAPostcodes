@@ -36,7 +36,7 @@ public class ApiController {
     @GET
     @Path("/districts")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getDistricts(@QueryParam("id") Integer regionId) {
+    public Response getDistricts(@QueryParam("id") String regionId) {
         LOGGER.info("User ask API: districts?id=" + regionId);
         List<District> districts = apiService.getDistricts(regionId);
         return Response.status(200).entity(districts.toString()).build();
@@ -45,7 +45,7 @@ public class ApiController {
     @GET
     @Path("/cities")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getCities(@QueryParam("id") Integer districtId) {
+    public Response getCities(@QueryParam("id") String districtId) {
         LOGGER.info("User ask API: cities?id=" + districtId);
         List<City> cities = apiService.getCities(districtId);
         return Response.status(200).entity(cities.toString()).build();
@@ -54,7 +54,7 @@ public class ApiController {
     @GET
     @Path("/postcode")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getPostcode(@QueryParam("id") Integer cityId) {
+    public Response getPostcode(@QueryParam("id") String cityId) {
         LOGGER.info("User ask API: postcode?id=" + cityId);
         City city = apiService.getCity(cityId);
         return Response.status(200).entity(city.toString()).build();
@@ -63,7 +63,7 @@ public class ApiController {
     @GET
     @Path("/region")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getRegion(@QueryParam("id") Integer regionId) {
+    public Response getRegion(@QueryParam("id") String regionId) {
         LOGGER.info("User ask API: region?id=" + regionId);
         Region region = apiService.getRegion(regionId);
         return Response.status(200).entity(region.toString()).build();
@@ -72,7 +72,7 @@ public class ApiController {
     @GET
     @Path("/district")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getDistrict(@QueryParam("id") Integer districtId) {
+    public Response getDistrict(@QueryParam("id") String districtId) {
         LOGGER.info("User ask API: district?id=" + districtId);
         District district = apiService.getDistrict(districtId);
         return Response.status(200).entity(district.toString()).build();
@@ -81,7 +81,7 @@ public class ApiController {
     @GET
     @Path("/city")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public Response getCity(@QueryParam("id") Integer cityId) {
+    public Response getCity(@QueryParam("id") String cityId) {
         LOGGER.info("User ask API(alias): city?id=" + cityId);
         return getPostcode(cityId);// redirect to '/postcode?id={cityId}'
 
