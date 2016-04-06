@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.pikaso.constants.Constants;
 import com.pikaso.database.ConnectionPool;
+import com.pikaso.exceptions.ApiException;
 
 public abstract class ADao<TEntity> implements IDao<TEntity> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ADao.class);
@@ -47,7 +48,8 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
                 }
                 entity = createInstance(queryResult);
             } else {
-                throw new RuntimeException(String.format(Constants.EMPTY_RESULTSET, Constants.QUERY_GET_BY_ID));
+                throw new ApiException();
+                //throw new RuntimeException(String.format(Constants.EMPTY_RESULTSET, Constants.QUERY_GET_BY_ID));
             }
         } catch (SQLException e) {
             LOGGER.error("Can't execute query 'QUERY_GET_BY_ID' in table: "+tableName,e);
