@@ -22,13 +22,13 @@ public final class ConnectionPool {
         try {
             InitialContext ic = new InitialContext();
             Context initialContext = (Context) ic.lookup("java:comp/env");
-            if(initialContext.getEnvironment().isEmpty()){
-                dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
-            }else{
-                dataSource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
-            }
+            dataSource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
         } catch (NamingException e) {
-            LOGGER.error("Can't establish connection with Database",e);
+            try {
+                dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
+            } catch (NamingException e1) {
+                LOGGER.error("Can't establish connection with Database",e1);
+            }
         }
     }
 
