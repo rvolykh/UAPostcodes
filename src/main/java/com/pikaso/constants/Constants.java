@@ -4,13 +4,11 @@ public final class Constants {
     public static final Integer PAGEABLE_PAGE_SIZE = 20;
 
     /* Error messages */
-    public static final String FAILED_JDBC_DRIVER = "Failed to create JDBC Driver";
-    public static final String FAILED_REGISTRATE_DRIVER = "Failed to Registrate JDBC Driver";
-    public static final String QUERY_NOT_FOUND = "Query not found %s";
-    public static final String EMPTY_RESULTSET = "Empty ResultSet by Query %s";
-    public static final String DATABASE_READING_ERROR = "Database Reading Error";
+    public static final String EMPTY_RESULTSET = "Value with this ID not exsist, table: ";
     public static final String FAIL_QUERY_EXECUTE = "Can't execute queury %s";
     public static final String DATABASE_CONNECTION_ERROR = "Can not connect to database";
+    public static final String DATABASE_READING_ERROR = "Database Reading Error";
+    public static final String FAIL_CREATE_TABLE = "Fail create table %s";
 
     /* Tables names */
     public static final String TABLE_NAME_CITY = "City";
@@ -30,5 +28,7 @@ public final class Constants {
 
     public static final String GET_ALL_PAGEABLE = "SELECT * FROM City LIMIT %d, %d;";
     public static final String GET_ALL_PAGEABLE_COUNT = "SELECT COUNT(*) FROM City;";
+    
+    public static final String CITY_TOTAL_COUNT_MSG = "Cities total count = %d";
 
 }

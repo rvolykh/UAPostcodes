@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.pikaso.constants.Constants;
 import com.pikaso.database.ConnectionPool;
 import com.pikaso.entity.District;
+import com.pikaso.exceptions.ApiException;
 
 public class DistrictDao extends ADao<District> {
     private static final Logger LOGGER = LoggerFactory.getLogger(DistrictDao.class);
@@ -20,31 +21,22 @@ public class DistrictDao extends ADao<District> {
 
     @Override
     public void createTable() {
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            connection = ConnectionPool.getInstance().getConnection();
-            if (connection != null) {
-                statement = connection.createStatement();
-                if (statement != null) {
-                    statement.executeUpdate(Constants.QUERY_CREATE_TABLE_DISTRICT);
-                    statement.close();
-                }else{
-                    LOGGER.error("Can't get Statement from Connection");
-                }
-                connection.close();
-            }else{
-                LOGGER.error("Can't get Database connection");
-            }
+        try (Connection con = ConnectionPool.getInstance().getConnection(); 
+                Statement stat = con.createStatement()) {
+            stat.executeUpdate(Constants.QUERY_CREATE_TABLE_DISTRICT);
+            LOGGER.trace("Executed - "+Constants.QUERY_CREATE_TABLE_DISTRICT);
         } catch (SQLException e) {
-            LOGGER.error("Can't create table " + Constants.TABLE_NAME_DISTRICT, e);
-            throw new RuntimeException("Can't create table " + Constants.TABLE_NAME_DISTRICT, e);
+            throw new ApiException(String.format(Constants.FAIL_CREATE_TABLE, 
+                    Constants.TABLE_NAME_DISTRICT), e);
         }
 
     }
 
     @Override
     protected District createInstance(String[] args) {
+        if(args.length!=3 && !args[0].matches("\\d+") && !args[2].matches("\\d+")){
+            return null;
+        }
         return new District(Integer.parseInt(args[0]), args[1], Integer.parseInt(args[2]));
     }
 

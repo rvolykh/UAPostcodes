@@ -10,7 +10,17 @@ import org.slf4j.LoggerFactory;
 public class ApiException extends WebApplicationException{
     private static final long serialVersionUID = 5975744143115057206L;
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiException.class);
-
+    
+    /** Warning message */
+    public ApiException(String message){
+        LOGGER.warn(message);
+    }
+    
+    /** Error message */
+    public ApiException(String message, Exception e){
+        LOGGER.error(message,e);
+    }
+    
     @Override
     public Response getResponse() {
         LOGGER.info("User asked for unavailable id");
@@ -18,8 +28,6 @@ public class ApiException extends WebApplicationException{
                 .entity("{\"error\":{\"code\":\"400\",\"msg\":\"Please look at APIs Reference\"}}")
                 .type(MediaType.APPLICATION_JSON).
                 build();
-    }
-    
-    
+    } 
     
 }
