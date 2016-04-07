@@ -14,7 +14,7 @@
 </head>
 <body>
   <header>
-    <div id="logo"></div>
+    <a href="."><div id="logo"></div></a>
     <div id="slogan">ПОШТОВІ ІНДЕКСИ УКРАЇНИ</div>
   </header>
   <nav>
