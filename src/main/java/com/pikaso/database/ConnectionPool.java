@@ -13,21 +13,21 @@ import com.pikaso.constants.Constants;
 public final class ConnectionPool {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionPool.class);
     
-    @SuppressWarnings("unused")
-    private static final ConnectionPool connectionPool = new ConnectionPool();
+    private static DataSource dataSource = initDataSource();
     
-    private static DataSource dataSource;// = methd();
-    
-    private ConnectionPool() {
+    private static DataSource initDataSource() {
         try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/MySQLDS");
+            DataSource result = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/MySQLDS");
+            return result;
         } catch (NamingException e) {
             try {
-                dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
+                DataSource result = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/pool-ds");
+                return result;
             } catch (NamingException e1) {
                 LOGGER.error("Can't establish connection with Database",e);
             }
         }
+        return null;
     }
 
     public static DataSource getInstance() {
