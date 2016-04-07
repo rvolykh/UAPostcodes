@@ -258,3 +258,15 @@ li:hover, .selected-nav {
 ul a, ul a:visited {
     color: #fff;
 }
+
+/* ERROR page */
+.error_a, .error_a:visited {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 2px;
+    border-radius: 15px;
+}
+.error_text {
+    font-size: 1.5em;
+}

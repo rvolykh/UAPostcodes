@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import com.pikaso.constants.Constants;
 
-
 public final class ConnectionPool {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionPool.class);
     
