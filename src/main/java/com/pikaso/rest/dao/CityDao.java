@@ -24,7 +24,7 @@ public class CityDao extends ADao<City> {
         try (Connection con = ConnectionPool.getInstance().getConnection(); 
                 Statement stat = con.createStatement()) {
             stat.executeUpdate(Constants.QUERY_CREATE_TABLE_CITY);
-            LOGGER.trace("Executed - "+Constants.QUERY_CREATE_TABLE_CITY);
+            LOGGER.trace("Executed - {}", Constants.QUERY_CREATE_TABLE_CITY);
         } catch (SQLException e) {
             throw new ApiException(String.format(Constants.FAIL_CREATE_TABLE, 
                     Constants.TABLE_NAME_CITY), e);

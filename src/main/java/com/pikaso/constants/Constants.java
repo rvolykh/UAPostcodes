@@ -29,6 +29,6 @@ public final class Constants {
     public static final String GET_ALL_PAGEABLE = "SELECT * FROM City LIMIT %d, %d;";
     public static final String GET_ALL_PAGEABLE_COUNT = "SELECT COUNT(*) FROM City;";
     
-    public static final String CITY_TOTAL_COUNT_MSG = "Cities total count = %d";
+    public static final String CITY_TOTAL_COUNT_MSG = "Cities total count = {}";
 
 }

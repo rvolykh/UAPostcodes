@@ -22,14 +22,14 @@ public class ApiService implements IApiService{
     @Override
     public List<City> getCities(String districtId) {
         List<City> cities = cityDao.getByFieldName("districtID", districtId);
-        LOGGER.info(cities.size()+" cities returned from DistrictID="+districtId);
+        LOGGER.info("{} cities returned from DistrictID={}", cities.size(), districtId);
         return cities;
     }
 
     @Override
     public List<District> getDistricts(String regionId) {
         List<District> districts = districtDao.getByFieldName("regionID", regionId);
-        LOGGER.info(districts.size()+" districts returned from RegionID="+regionId);
+        LOGGER.info("{} districts returned from RegionID={}", districts.size(), regionId);
         return districts;
     }
 
@@ -41,21 +41,21 @@ public class ApiService implements IApiService{
     @Override
     public City getCity(String id) {
         City city = cityDao.getById(id);
-        LOGGER.info("By CityID="+id+" returned "+city.getName());
+        LOGGER.info("By CityID={} returned {}", id, city.getName());
         return city;
     }
     
     @Override
     public Region getRegion(String id) {
         Region region = regiontDao.getById(id);
-        LOGGER.info("By RegionID="+id+" returned "+region.getName());
+        LOGGER.info("By RegionID={} returned {}", id, region.getName());
         return region;
     }
     
     @Override
     public District getDistrict(String id) {
         District district = districtDao.getById(id);
-        LOGGER.info("By DistrictID="+id+" returned "+district.getName());
+        LOGGER.info("By DistrictID={} returned {}", id, district.getName());
         return district;
     }
 

@@ -29,7 +29,7 @@ public class ExampleController {
         cities.setPage(page);
         model.addAttribute("cities", cities);
 
-        LOGGER.info("User ask for page = "+page);
+        LOGGER.info("User ask for page = {}",page);
         return "example";
     }
 

@@ -24,7 +24,7 @@ public class DistrictDao extends ADao<District> {
         try (Connection con = ConnectionPool.getInstance().getConnection(); 
                 Statement stat = con.createStatement()) {
             stat.executeUpdate(Constants.QUERY_CREATE_TABLE_DISTRICT);
-            LOGGER.trace("Executed - "+Constants.QUERY_CREATE_TABLE_DISTRICT);
+            LOGGER.trace("Executed - {}", Constants.QUERY_CREATE_TABLE_DISTRICT);
         } catch (SQLException e) {
             throw new ApiException(String.format(Constants.FAIL_CREATE_TABLE, 
                     Constants.TABLE_NAME_DISTRICT), e);

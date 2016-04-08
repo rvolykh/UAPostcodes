@@ -67,7 +67,7 @@ public class ExampleDao implements IExampleDao {
                 while (rs.next()) {
                     count = rs.getInt(1);
                 }
-                LOGGER.trace(String.format(Constants.CITY_TOTAL_COUNT_MSG, count));
+                LOGGER.trace(Constants.CITY_TOTAL_COUNT_MSG,count);
             }
         } catch (SQLException e) {
             throw new ApiException(String.format(Constants.FAIL_QUERY_EXECUTE, Constants.GET_ALL_PAGEABLE_COUNT), e);

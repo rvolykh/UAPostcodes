@@ -22,7 +22,7 @@ public class ExampleService implements IExampleService{
         if(lastPage<0){
             int count = exampleRepository.getAllCount();
             lastPage = count % Constants.PAGEABLE_PAGE_SIZE != 0 ? count/Constants.PAGEABLE_PAGE_SIZE: count/Constants.PAGEABLE_PAGE_SIZE-1;
-            LOGGER.info("Calculate last page from database = "+lastPage);
+            LOGGER.info("Calculate last page from database = {}",lastPage);
         }
         pageHolder.setLastPage(lastPage);
         return pageHolder;
