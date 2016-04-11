@@ -33,10 +33,11 @@ public class CityDao extends ADao<City> {
 
     @Override
     protected City createInstance(String[] args) {
-        if(args.length!=4 && !args[0].matches("\\d+") && !args[3].matches("\\d+")){
+        /* id, name, postcode, districtId, code */
+        if(args.length!=5 && !args[0].matches("\\d+") && !args[3].matches("\\d+") && !args[4].matches("\\d+")){
             return null;
         }
-        return new City(Integer.parseInt(args[0]), args[1], args[2], Integer.parseInt(args[3]));
+        return new City(Integer.parseInt(args[0]), args[1], args[2], Integer.parseInt(args[3]), Integer.parseInt(args[4]));
     }
 
 }

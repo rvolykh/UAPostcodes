@@ -3,15 +3,16 @@ package com.pikaso.entity;
 public class Region {
     private Integer id;
     private String name;
-    
+    private Integer code;
     
     public Region(){
         
     }
 
-    public Region(Integer id, String name) {
+    public Region(Integer id, String name, Integer code) {
         this.name = name;
         this.id = id;
+        this.code = code;
     }
 
     public String getName() {
@@ -30,12 +31,20 @@ public class Region {
         this.id = id;
     }
     
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
     /**
      * TO JSON format
      */
     @Override
     public String toString(){
-        return String.format("{\"id\":\"%d\", \"name\":\"%s\"}", id, name);
+        return String.format("{\"id\":\"%d\", \"name\":\"%s\", \"code\":\"%d\"}", id, name, code);
     }
     
 }

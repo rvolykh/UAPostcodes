@@ -101,6 +101,14 @@ footer {
   background-image: url(../img/body-bg.jpg);
 }
 
+.link, .link:visited {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 15px;
+}
+
 /* API intro  */
 .description {
   margin: 10px;

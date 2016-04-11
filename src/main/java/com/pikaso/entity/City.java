@@ -4,17 +4,19 @@ public class City{
     private Integer id;
     private String name;
     private String postcode;
-    private Integer destrictID;    
+    private Integer destrictID;
+    private Integer code;
     
     public City(){
         
     }
 
-    public City(Integer id, String name, String postcode, Integer destrictID) {
+    public City(Integer id, String name, String postcode, Integer destrictID, Integer code) {
         this.id = id;
         this.name = name;
         this.postcode = postcode;
         this.destrictID = destrictID;
+        this.code = code;
     }
 
     public String getName() {
@@ -49,12 +51,20 @@ public class City{
         this.id = id;
     }
     
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
     /**
      * TO JSON format
      */
     @Override
     public String toString(){
-        return String.format("{\"id\":\"%d\", \"name\":\"%s\", \"postcode\":\"%s\"}", id, name, postcode);
+        return String.format("{\"id\":\"%d\", \"name\":\"%s\", \"postcode\":\"%s\", \"code\":\"%d\"}", id, name, postcode, code);
     }
     
 }

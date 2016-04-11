@@ -115,7 +115,7 @@ public abstract class ADao<TEntity> implements IDao<TEntity> {
             }
         } catch (SQLException e) {
             throw new ApiException(String.format(Constants.FAIL_QUERY_EXECUTE, query), e);
-        }  
+        }
         
         if (all.isEmpty()) {
             throw new ApiException("Value with this ID not exsist, table: "+this.getClass().getName());

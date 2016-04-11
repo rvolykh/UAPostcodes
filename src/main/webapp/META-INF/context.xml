@@ -6,7 +6,6 @@
     name="jdbc/pool-ds" auth="Application" driverClassName="com.mysql.jdbc.Driver"
       url="jdbc:mysql://localhost/uapostcodes_db"
       user="root" password="root"
-      minPool="5" maxPool="10" maxSize="30" idleTimeout="3600"
-      validationQuery="SELECT COUNT(*) FROM Region"/>
-
+      minPool="5" maxPool="10" maxSize="30" idleTimeout="3600" />
+      
 </Context>

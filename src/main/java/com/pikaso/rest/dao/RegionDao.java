@@ -33,10 +33,10 @@ public class RegionDao extends ADao<Region> {
 
     @Override
     protected Region createInstance(String[] args) {
-        if(args.length!=2 && !args[0].matches("\\d+")){
+        if(args.length!=3 && !args[0].matches("\\d+") && !args[2].matches("\\d+")){
             return null;
         }
-        return new Region(Integer.parseInt(args[0]), args[1]);
+        return new Region(Integer.parseInt(args[0]), args[1], Integer.parseInt(args[2]));
     }
 
 }

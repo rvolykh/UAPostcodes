@@ -20,11 +20,13 @@ public final class Constants {
     public static final String QUERY_GET_BY_FIELD = "SELECT * FROM %s WHERE %s = '%s';";
     public static final String QUERY_GET_ALL = "SELECT * FROM %s;";
     public static final String QUERY_CREATE_TABLE_CITY = "CREATE TABLE City (id INTEGER not NULL, "
-            + "name VARCHAR(255), postalcode VARCHAR(10), districtID INTEGER, PRIMARY KEY ( id ))";
+            + "name VARCHAR(255), postalcode VARCHAR(10), districtID INTEGER not NULL, code INTEGER, "
+            + "PRIMARY KEY ( id ), FOREIGN KEY (districtID) REFERENCES District(id))";
     public static final String QUERY_CREATE_TABLE_DISTRICT = "CREATE TABLE District (id INTEGER not NULL, "
-            + "name VARCHAR(255), regionID INTEGER, PRIMARY KEY ( id ))";
+            + "name VARCHAR(255), code INTEGER, regionID INTEGER not NULL, "
+            + "PRIMARY KEY ( id ), FOREIGN KEY (regionID) REFERENCES Region(id))";
     public static final String QUERY_CREATE_TABLE_REGION = "CREATE TABLE Region (id INTEGER not NULL, "
-            + "name VARCHAR(255), PRIMARY KEY ( id ))";
+            + "name VARCHAR(255), code INTEGER, PRIMARY KEY ( id ))";
 
     public static final String GET_ALL_PAGEABLE = "SELECT * FROM City LIMIT %d, %d;";
     public static final String GET_ALL_PAGEABLE_COUNT = "SELECT COUNT(*) FROM City;";

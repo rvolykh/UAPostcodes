@@ -34,10 +34,11 @@ public class DistrictDao extends ADao<District> {
 
     @Override
     protected District createInstance(String[] args) {
-        if(args.length!=3 && !args[0].matches("\\d+") && !args[2].matches("\\d+")){
+        /* id, name, code, regionId */
+        if(args.length!=4 && !args[0].matches("\\d+") && !args[2].matches("\\d+") && !args[3].matches("\\d+")){
             return null;
         }
-        return new District(Integer.parseInt(args[0]), args[1], Integer.parseInt(args[2]));
+        return new District(Integer.parseInt(args[0]), args[1], Integer.parseInt(args[2]), Integer.parseInt(args[3]));
     }
 
 }

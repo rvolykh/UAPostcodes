@@ -36,10 +36,10 @@ public class ExampleDao implements IExampleDao {
                         queryResult[i] = rs.getString(i + 1);
                     }
                     LOGGER.trace(Arrays.toString(queryResult));
-                    if(queryResult.length == 4 && queryResult[0].matches("\\d+") && 
-                            queryResult[3].matches("\\d+")){
+                    if(queryResult.length == 5 && queryResult[0].matches("\\d+") && 
+                            queryResult[3].matches("\\d+") && queryResult[4].matches("\\d+")){
                         City entity =  new City(Integer.parseInt(queryResult[0]), queryResult[1], 
-                                queryResult[2], Integer.parseInt(queryResult[3]));
+                                queryResult[2], Integer.parseInt(queryResult[3]), Integer.parseInt(queryResult[4]));
                         all.add(entity);
                     }
                 }
