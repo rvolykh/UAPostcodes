@@ -1,6 +1,6 @@
 # UAPostcodes
-## REST: Ukrainian postal codes
-## (Поштові індекси України)
+## REST: Ukrainian postal codes 
+### *(Поштові індекси України)*
 
 Це RESTfull сервіс, за допомогою якого можна
 отримати інформацію по поштових індексах України, а також
@@ -24,6 +24,7 @@
 - [ ] api/city?code={cityCode}
 
 > Openshift example :globe_with_meridians:: [http://ua-postalcodes.rhcloud.com](http://ua-postalcodes.rhcloud.com)
+
 @rvolykh: :free: to use 
 
 
