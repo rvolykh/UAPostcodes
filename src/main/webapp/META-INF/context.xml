@@ -3,7 +3,7 @@
 <Context>
   <!-- Specify a JDBC datasource -->
   <Resource factory="snaq.db.DBPoolDataSourceFactory" type="javax.sql.DataSource"
-    name="jdbc/pool-ds" auth="Application" driverClassName="com.mysql.jdbc.Driver"
+    name="jdbc/MySQLDS" auth="Application" driverClassName="com.mysql.jdbc.Driver"
       url="jdbc:mysql://localhost/uapostcodes_db"
       user="root" password="root"
       minPool="5" maxPool="10" maxSize="30" idleTimeout="3600" />

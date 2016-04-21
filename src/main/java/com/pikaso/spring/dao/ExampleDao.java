@@ -15,6 +15,7 @@ import com.pikaso.constants.Constants;
 import com.pikaso.database.ConnectionPool;
 import com.pikaso.entity.City;
 import com.pikaso.exceptions.ApiException;
+import com.pikaso.exceptions.ExampleException;
 import com.pikaso.pageable.PageHolder;
 
 
@@ -45,11 +46,11 @@ public class ExampleDao implements IExampleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new ApiException(String.format(Constants.FAIL_QUERY_EXECUTE, query), e);
+            throw new ExampleException(String.format(Constants.FAIL_QUERY_EXECUTE, query), e);
         }  
         
         if (all.isEmpty()) {
-            throw new ApiException(Constants.EMPTY_RESULTSET+this.getClass().getName());
+            throw new ExampleException(Constants.EMPTY_RESULTSET+this.getClass().getName());
         }
         
         result = new PageHolder<City>(all);
@@ -70,11 +71,11 @@ public class ExampleDao implements IExampleDao {
                 LOGGER.trace(Constants.CITY_TOTAL_COUNT_MSG,count);
             }
         } catch (SQLException e) {
-            throw new ApiException(String.format(Constants.FAIL_QUERY_EXECUTE, Constants.GET_ALL_PAGEABLE_COUNT), e);
+            throw new ExampleException(String.format(Constants.FAIL_QUERY_EXECUTE, Constants.GET_ALL_PAGEABLE_COUNT), e);
         }  
         
         if (count == 0) {
-            throw new ApiException(String.format(Constants.CITY_TOTAL_COUNT_MSG, count));
+            throw new ExampleException(String.format(Constants.CITY_TOTAL_COUNT_MSG, count));
         }
 
         return count;
